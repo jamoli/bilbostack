@@ -20,3 +20,8 @@ opción para desarrollar sitios web pequeños de manera profesional y muy ágil.
     $ cd bilbostack
     $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar install
+
+Si al probar el proyecto por primera vez te aparece una página en blanco o
+cualquier mensaje de error, es casi seguro que debes cambiar los permisos
+de los directorios logs/ y/o cache/   El usuario con el que se ejecuta el
+servidor web debe tener permisos de escritura en esos directorios.
