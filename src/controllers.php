@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('portada.twig', array(
-        'ponentes' => $app['ponentes']
-    ));
+    // la portada se cachea de forma pública durante 10 minutos
+    return new Response(
+        $app['twig']->render('portada.twig', array('ponentes' => $app['ponentes'])),
+        200, array('Cache-Control' => 'public, max-age=600, s-maxage=600')
+    );
 })
 ->bind('portada');
 
