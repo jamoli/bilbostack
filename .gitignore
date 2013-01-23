@@ -1,8 +1,8 @@
 /vendor/
 /cache/
-!/cache/.keep
+!/cache/.gitkeep
 /logs/
-!/logs/.keep
+!/logs/.gitkeep
 composer.lock
 
 .DS_Store
