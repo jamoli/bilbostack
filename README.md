@@ -25,3 +25,22 @@ Si al probar el proyecto por primera vez te aparece una página en blanco o
 cualquier mensaje de error, es casi seguro que debes cambiar los permisos
 de los directorios logs/ y/o cache/   El usuario con el que se ejecuta el
 servidor web debe tener permisos de escritura en esos directorios.
+
+La aplicación cuenta con una parte de administración o *backend* accesible en la
+URL `/admin`. El usuario para acceder a ella es `admin` y su contraseña es `1234`.
+
+La información de los usuarios registrados se guarda en una base de datos de
+tipo SQLite (asegúrate de que tu PHP tiene soporte de SQLite y de PDO). Para
+inicializar las tablas en la base de datos, ejecuta el siguiente comando de consola:
+
+```
+$ ./console crear_base_datos
+```
+Para poder insertar registros en la base de datos, tanto el archivo como el directorio
+donde se encuentra tienen que tener permisos de escritura para el servidor web. En
+este ejemplo sencillo puedes resolverlo dando permisos de escritura a "otros":
+
+```
+$ chmod o+w config
+$ chmod o+w config/datos.sqlite
+```

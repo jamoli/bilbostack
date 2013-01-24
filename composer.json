@@ -5,6 +5,7 @@
         "silex/silex": "1.0.*",
         "twig/twig": ">=1.8.0,<2.0-dev",
         "monolog/monolog": ">=1.0.0,<1.2-dev",
+        "doctrine/dbal": "2.2.*",
         "symfony/browser-kit": "2.1.*",
         "symfony/class-loader": "2.1.*",
         "symfony/config": "2.1.*",

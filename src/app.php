@@ -1,6 +1,7 @@
 <?php
 
 use Silex\Application;
+use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpCacheServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
@@ -15,6 +16,7 @@ $app->register(new UrlGeneratorServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new TranslationServiceProvider()); // requerido por los formularios
 $app->register(new SecurityServiceProvider());
+$app->register(new DoctrineServiceProvider());
 
 $app->register(new TwigServiceProvider(), array(
     'twig.path'    => array(__DIR__.'/../templates'),
@@ -50,6 +52,12 @@ $app['security.firewalls'] = array(
             'admin' => array('ROLE_ADMIN', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
         ),
     ),
+);
+
+// configuración de la base de datos
+$app['db.options'] = array(
+    'driver'   => 'pdo_sqlite',
+    'path'     => __DIR__.'/../config/datos.sqlite',
 );
 
 return $app;

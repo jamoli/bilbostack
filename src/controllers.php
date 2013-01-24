@@ -105,6 +105,7 @@ $app->match('/registro', function (Request $request) use ($app) {
             $datos = $form->getData();
  
             // guardar los datos en una base de datos
+            $app['db']->insert('registro', $datos);
  
             return $app['twig']->render('registro_completado.twig');
         }

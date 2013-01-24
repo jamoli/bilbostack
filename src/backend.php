@@ -14,7 +14,7 @@ $backend->before(function () use($app) {
 
 // -- PORTADA -----------------------------------------------------------------
 $backend->get('/', function () use ($app) {
-    $usuarios = array();
+    $usuarios = $app['db']->fetchAll("SELECT * FROM registro");
 
     return $app['twig']->render('backend/portada.twig', array(
         'usuarios' => $usuarios
