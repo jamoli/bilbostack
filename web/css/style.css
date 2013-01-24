@@ -1125,3 +1125,21 @@ input[type=submit] {
 div#primary-content {
     min-height: 350px;
 }
+
+body.backend table {
+    color: #222;
+    font-size: 14px;
+    margin: 2em 0;
+    width: 100%;
+}
+
+
+body.backend tr,
+body.backend th,
+body.backend td {
+    border: 1px solid #777;
+    padding: .2em;
+}
+body.backend th {
+    font-weight: bold;
+}

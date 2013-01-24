@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+// -- BACKEND -----------------------------------------------------------------
+$app->mount('/admin', include 'backend.php');
+
 // -- PORTADA -----------------------------------------------------------------
 $app->get('/', function () use ($app) {
     // la portada se cachea de forma pública durante 10 minutos

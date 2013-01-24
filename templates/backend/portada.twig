@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block body_class 'backend page page-template-default' %}
+{% block titulo     'Backend - Portada' %}
+
+{% block contenido %}
+<div id="core" class="container clearfix">
+    <div id="primary-content" class="clearfix">
+        <h2>Usuarios registrados</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Track</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.track == 1 ? 'Programación' : 'Diseño' }}</td>
+                    <td>{{ usuario.comentarios }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Todavía no se ha registrado nadie</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
