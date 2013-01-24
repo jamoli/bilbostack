@@ -1091,3 +1091,37 @@ body.error div#core {
     text-align: center;
 }
 
+div#form > div {
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+div#form > div > label {
+    clear: left;
+    color: #555;
+    display: block;
+    font-weight: bold;
+    margin-bottom: .2em;
+}
+
+div#form input, div#form textarea, input[type=submit] {
+    border: thin solid #999;
+    color: #222;
+    font-size: 16px;
+}
+div#form_track input, div#form_track label {
+    float: left;
+    width: auto;
+}
+div#form_track label {
+    margin-right: 2em;
+}
+input[type=submit] {
+    background: #222;
+    color: #FFF;
+    margin-bottom: 2em;
+}
+
+div#primary-content {
+    min-height: 350px;
+}

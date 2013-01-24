@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+// -- PORTADA -----------------------------------------------------------------
 $app->get('/', function () use ($app) {
     // la portada se cachea de forma pública durante 10 minutos
     return new Response(
@@ -15,6 +16,7 @@ $app->get('/', function () use ($app) {
 })
 ->bind('portada');
 
+// -- AGENDA ------------------------------------------------------------------
 $app->get('/agenda', function () use ($app) {
     // insertar la información de cada ponente dentro de su ponencia
     // (las ponencias sólo guardan el slug del ponente, pero necesitamos
@@ -32,6 +34,7 @@ $app->get('/agenda', function () use ($app) {
 })
 ->bind('agenda');
 
+// -- LOCALIZACION / MAPAS ----------------------------------------------------
 $app->get('/localizacion-mapas', function () use ($app) {
     return $app['twig']->render('localizacion.twig', array());
 })
@@ -42,6 +45,7 @@ $app->get('/donde-comer', function () use ($app) {
 })
 ->bind('comer');
 
+// -- PONENTE -----------------------------------------------------------------
 $app->get('/speakers/{slug}', function ($slug) use ($app) {
     if (!array_key_exists($slug, $app['ponentes'])) {
         $app->abort(404, "No existe el ponente $slug.");
@@ -58,6 +62,7 @@ $app->get('/speakers/{slug}', function ($slug) use ($app) {
 })
 ->bind('ponente');
 
+// -- PONENCIA ----------------------------------------------------------------
 $app->get('/schedule/{slug}', function ($slug) use ($app) {
     if (!array_key_exists($slug, $app['ponencias'])) {
         $app->abort(404, "No existe la ponencia $slug.");
@@ -74,7 +79,39 @@ $app->get('/schedule/{slug}', function ($slug) use ($app) {
 })
 ->bind('ponencia');
 
+// -- REGISTRO ----------------------------------------------------------------
+$app->match('/registro', function (Request $request) use ($app) {
+    $form = $app['form.factory']->createBuilder('form')
+        ->add('nombre')
+        ->add('email')
+        ->add('track', 'choice', array(
+            'choices'  => array(1 => 'Track 1 (programación)', 2 => 'Track 2 (diseño)'),
+            'expanded' => true,
+            'label'    => '¿Qué track te interesa más?'
+        ))
+        ->add('comentarios', 'textarea', array(
+            'required' => false,
+            'label'    => 'Comentarios (opcional)'
+        ))
+        ->getForm();
+ 
+    if ('POST' == $request->getMethod()) {
+        $form->bind($request);
+ 
+        if ($form->isValid()) {
+            $datos = $form->getData();
+ 
+            // guardar los datos en una base de datos
+ 
+            return $app['twig']->render('registro_completado.twig');
+        }
+    }
 
+    return $app['twig']->render('registro.twig', array('form' => $form->createView()));
+})
+->bind('registro');
+
+// -- PÁGINAS DE ERROR --------------------------------------------------------
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         return;

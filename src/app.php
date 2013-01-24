@@ -1,13 +1,18 @@
 <?php
 
 use Silex\Application;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\HttpCacheServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
-use Silex\Provider\HttpCacheServiceProvider;
 
 $app = new Application();
 
 $app->register(new UrlGeneratorServiceProvider());
+
+$app->register(new FormServiceProvider());
+$app->register(new TranslationServiceProvider()); // requerido por los formularios
 
 $app->register(new TwigServiceProvider(), array(
     'twig.path'    => array(__DIR__.'/../templates'),
@@ -25,7 +30,7 @@ $app->register(new TwigServiceProvider(), array(
 // activada la cache HTTP
 $app->register(new HttpCacheServiceProvider(), array(
    'http_cache.cache_dir' => __DIR__.'/../cache/http',
-   'http_cache.esi'       => null
+   'http_cache.esi'       => null,
 ));
 
 return $app;
