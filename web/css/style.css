@@ -297,7 +297,7 @@ li p {
 ---------------------------------------------------------------*/
 
 #header-full {
-	background: url(/img/headerbg.jpg) center no-repeat;
+	background: url(../img/headerbg.jpg) center no-repeat;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	background-size:cover;
@@ -405,7 +405,7 @@ a.register-cta:hover {
 	margin: 0;
 	padding: 15px 25px;
 	z-index: 30;
-	background: url(/img/nav_bg.png) 0 0 repeat;
+	background: url(../img/nav_bg.png) 0 0 repeat;
 	position: relative;
 }
 
@@ -879,11 +879,11 @@ span.the-format {
 }
 
 span.format-standard {
-	background: url(/img/format_standard.jpg) 0 0 no-repeat;
+	background: url(../img/format_standard.jpg) 0 0 no-repeat;
 }
 
 span.format-video {
-	background: url(/img/format_video.jpg) 0 0 no-repeat;
+	background: url(../img/format_video.jpg) 0 0 no-repeat;
 }
 
 .post-meta {
