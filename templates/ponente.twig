@@ -7,7 +7,7 @@
 <div id="core" class="container clearfix">
     <div id="primary-content" class="clearfix">
         <div class="speaker-single-thumb">
-            <img width="150" height="150" src="/img/{{ ponente.slug }}.png" class="attachment-speaker-image wp-post-image" alt="{{ ponente.nombre }}" title="{{ ponente.nombre }}">
+            <img width="150" height="150" src="{{ app.request.basepath }}/img/{{ ponente.slug }}.png" class="attachment-speaker-image wp-post-image" alt="{{ ponente.nombre }}" title="{{ ponente.nombre }}">
         </div>
 
         <h1>{{ ponente.nombre }}</h1>

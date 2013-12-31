@@ -23,7 +23,7 @@
             <div class="speaker clearfix">
                 <a href="{{ path('ponente', { 'slug': ponente.slug }) }}">
                     <h4>{{ ponente.nombre }}</h4>
-                    <img width="150" height="150" src="/img/{{ ponente.slug }}.png" class="attachment-post-thumbnail wp-post-image" alt="{{ ponente.nombre }}" title="{{ ponente.nombre }}">
+                    <img width="150" height="150" src="{{ app.request.basepath }}/img/{{ ponente.slug }}.png" class="attachment-post-thumbnail wp-post-image" alt="{{ ponente.nombre }}" title="{{ ponente.nombre }}">
                 </a>
             </div><!-- end .speaker -->
             {% endfor %}

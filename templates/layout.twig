@@ -16,12 +16,12 @@
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <!-- Stylesheets -->
 {% for asset in ['reset.css', 'style.css', 'media-queries.css', 'twitter.css'] %}
-        <link rel="stylesheet" href="/css/{{ asset }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ app.request.basepath }}/css/{{ asset }}" type="text/css" media="screen">
 {% endfor %}
         <!-- Icons -->
-        <link rel="shortcut icon" href="/favicon.png">
-        <script type='text/javascript' src='/js/jquery.js?ver=1.7.2'></script>
-        <script type='text/javascript' src='/js/comment-reply.js?ver=3.4.2'></script>
+        <link rel="shortcut icon" href="{{ app.request.basepath }}/favicon.png">
+        <script type='text/javascript' src='{{ app.request.basepath }}/js/jquery.js?ver=1.7.2'></script>
+        <script type='text/javascript' src='{{ app.request.basepath }}/js/comment-reply.js?ver=3.4.2'></script>
         <meta name="generator" content="Silex {{ constant("\\Silex\\Application::VERSION") }}">
         <link rel='canonical' href='http://bilbostack.com/'>
     </head>
@@ -32,7 +32,7 @@
                 <div id="top" class="clearfix">
                     <div class="location">
                         <div class="identity clearfix">
-                            <a href="{{ url('portada') }}" title="BilboStack"><img src="/img/logo.png"></a>
+                            <a href="{{ url('portada') }}" title="BilboStack"><img src="{{ app.request.basepath }}/img/logo.png"></a>
                         </div>
                     </div><!-- end .location -->
                 </div><!-- end #top -->
@@ -53,7 +53,7 @@
             <div id="sponsors" style="padding-left: 65px;" class="container clearfix">
             {% for patrocinador in app.patrocinadores %}
                 <div class="sponsor clearfix {{ patrocinador.slug }}">
-                    <a href="{{ patrocinador.url }}" title="{{ patrocinador.nombre }}"><img src="/img/logo-{{ patrocinador.slug }}.png" class="attachment-sponsor-image wp-post-image" alt="{{ patrocinador.nombre }}"></a>
+                    <a href="{{ patrocinador.url }}" title="{{ patrocinador.nombre }}"><img src="{{ app.request.basepath }}/img/logo-{{ patrocinador.slug }}.png" class="attachment-sponsor-image wp-post-image" alt="{{ patrocinador.nombre }}"></a>
                 </div><!-- end .sponsor -->
             {% endfor %}
             </div>
@@ -73,9 +73,8 @@
     'css3-mediaqueries.js',
     'jquery.mobilemenu.js',
     'plugin.init.js',
-    ''
 ] %}
-        <script type='text/javascript' src='/js/{{ asset }}?ver={{ app.version_assets }}'></script>
+        <script type='text/javascript' src='{{ app.request.basepath }}/js/{{ asset }}?ver={{ app.version_assets }}'></script>
 {% endfor %}
         <script type="text/javascript">
             var _gaq = _gaq || [];
